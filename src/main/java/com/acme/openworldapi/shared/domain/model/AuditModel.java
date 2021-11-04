@@ -1,4 +1,5 @@
 package com.acme.openworldapi.shared.domain.model;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
@@ -19,6 +20,7 @@ public class AuditModel {
     @Column (name = "created_at", nullable = false, updatable = false)
     @CreatedDate
     private Date createdAt;
+
     @Temporal(TemporalType.TIMESTAMP)
     @Column (name = "updated_at", nullable = false)
     @LastModifiedDate
