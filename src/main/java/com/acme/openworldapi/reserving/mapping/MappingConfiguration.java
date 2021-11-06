@@ -11,6 +11,11 @@ public class MappingConfiguration {
         return new DoctorMapper();
     }
 
+    @Bean
+    public UserMapper userMapper(){
+        return new UserMapper();
+    }
+
     /**
     @Bean
     public ReservationMapper commentMapper(){
