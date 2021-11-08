@@ -1,6 +1,6 @@
-package com.acme.openworldapi.reserving.domain.service;
+package com.acme.openworldapi.appointment.domain.service;
 
-import com.acme.openworldapi.reserving.domain.model.entity.Doctor;
+import com.acme.openworldapi.appointment.domain.model.entity.Doctor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 

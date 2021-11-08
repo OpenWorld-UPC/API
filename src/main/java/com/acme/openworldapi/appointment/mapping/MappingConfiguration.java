@@ -1,4 +1,4 @@
-package com.acme.openworldapi.reserving.mapping;
+package com.acme.openworldapi.appointment.mapping;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,9 +11,9 @@ public class MappingConfiguration {
         return new DoctorMapper();
     }
 
-    /**
+
     @Bean
-    public ReservationMapper commentMapper(){
+    public ReservationMapper reservationMapper(){
         return new ReservationMapper();
-    }**/
+    }
 }

@@ -1,8 +1,8 @@
-package com.acme.openworldapi.reserving.service;
+package com.acme.openworldapi.appointment.service;
 
-import com.acme.openworldapi.reserving.domain.model.entity.Doctor;
-import com.acme.openworldapi.reserving.domain.persistence.DoctorRepository;
-import com.acme.openworldapi.reserving.domain.service.DoctorService;
+import com.acme.openworldapi.appointment.domain.model.entity.Doctor;
+import com.acme.openworldapi.appointment.domain.persistence.DoctorRepository;
+import com.acme.openworldapi.appointment.domain.service.DoctorService;
 import com.acme.openworldapi.shared.exception.ResourceValidationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

@@ -1,8 +1,8 @@
-package com.acme.openworldapi.reserving.mapping;
+package com.acme.openworldapi.appointment.mapping;
 
-import com.acme.openworldapi.reserving.domain.model.entity.Doctor;
-import com.acme.openworldapi.reserving.resource.CreateDoctorResource;
-import com.acme.openworldapi.reserving.resource.DoctorResource;
+import com.acme.openworldapi.appointment.domain.model.entity.Doctor;
+import com.acme.openworldapi.appointment.resource.CreateDoctorResource;
+import com.acme.openworldapi.appointment.resource.DoctorResource;
 import com.acme.openworldapi.shared.mapping.EnhancedModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

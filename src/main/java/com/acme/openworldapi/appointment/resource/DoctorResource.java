@@ -1,4 +1,4 @@
-package com.acme.openworldapi.reserving.resource;
+package com.acme.openworldapi.appointment.resource;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -13,5 +13,5 @@ public class DoctorResource {
     private String description;
     private String workplace;
     private String specialty;
-    private String qualification;
+    private int qualification;
 }

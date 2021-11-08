@@ -1,4 +1,4 @@
-package com.acme.openworldapi.reserving.domain.model.entity;
+package com.acme.openworldapi.appointment.domain.model.entity;
 
 import com.acme.openworldapi.shared.domain.model.AuditModel;
 import lombok.*;
@@ -8,14 +8,14 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-@Getter
 @Setter
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @With
 @Entity
-@Table(name = "doctors")
-public class Doctor extends AuditModel {
+@Table(name = "reservations")
+public class Reservation extends AuditModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -23,34 +23,26 @@ public class Doctor extends AuditModel {
     @NotNull
     @NotBlank
     @Size(max = 100)
-    @Column(unique = true)
-    private String name;
+    private String title;
 
     @NotNull
-    private int age;
+    @Lob
+    private String content;
 
     @NotNull
     @NotBlank
     @Size(max = 1000)
-    private String photoUrl;
+    private String meetUrl;
 
     @NotNull
     @NotBlank
-    @Size(max = 250)
-    private String description;
+    @Size(max = 1000)
+    private String meetDate;
 
     @NotNull
-    @NotBlank
-    @Size(max = 250)
-    private String workplace;
+    private Boolean status;
 
-    @NotNull
-    @NotBlank
-    @Size(max = 250)
-    private String specialty;
-
-    @NotNull
-    @NotBlank
-    @Size(max = 250)
-    private String qualification;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "doctor_id", nullable = false)
+    private Doctor doctor;
 }
