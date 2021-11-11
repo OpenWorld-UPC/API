@@ -35,10 +35,7 @@ public class CreateReservationResource {
     private String meetDate;
 
     @NotNull
-<<<<<<< HEAD
     @Enumerated(EnumType.ORDINAL)
     private Status status;
-=======
-    private Boolean status;
->>>>>>> abeedd65e10ad25a65e482785a038b5b0e4a4354
+
 }
