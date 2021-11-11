@@ -1,6 +1,8 @@
 package com.acme.openworldapi.appointment.resource;
 
+
 import com.acme.openworldapi.appointment.domain.model.entity.enums.Status;
+
 import lombok.Getter;
 import lombok.Setter;
 

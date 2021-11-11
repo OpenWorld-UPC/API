@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+
 import javax.persistence.Lob;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -34,6 +35,10 @@ public class CreateReservationResource {
     private String meetDate;
 
     @NotNull
+<<<<<<< HEAD
     @Enumerated(EnumType.ORDINAL)
     private Status status;
+=======
+    private Boolean status;
+>>>>>>> abeedd65e10ad25a65e482785a038b5b0e4a4354
 }
