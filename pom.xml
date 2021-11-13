@@ -14,8 +14,7 @@
     <name>OpenWorldApi</name>
     <description>OpenWorldApi</description>
     <properties>
-        <java.version>8</java.version>
-        <maven.compiler.target>8</maven.compiler.target>
+        <java.version>17</java.version>
     </properties>
     <dependencies>
         <dependency>
