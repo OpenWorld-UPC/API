@@ -8,13 +8,7 @@ Feature: Doctor Adding
 
     @doctor-adding
     Scenario:  Add Doctor
-      When a Doctor Request is sent with values "BDD Best Practices", "A summary with the best practices for making BDD Tests.", "In the article we will explaining the 10 best practices for working with BDD Tests."
+      When a Doctor Request is sent with values "Enzo", 50, "photo url", "doctor description", "doctor workplace", "doctor specialty", 3
       Then a Response with Status 200 is received
-      And a Doctor Resource with values "BDD Best Practices", "A summary with the best practices for making BDD Tests.", "In the article we will explaining the 10 best practices for working with BDD Tests." is included in Response Body
+      And a Doctor Resource with values "Enzo", 50, "photo url", "doctor description", "doctor workplace", "doctor specialty", 3 is included in Response Body
 
-      @doctor_duplicated
-      Scenario: Add Doctor with existing Name
-        Given A Doctor Resource with values "BDD Best Practices", "A summary with the best practices for making BDD Tests.", "In the article we will explaining the 10 best practices for working with BDD Tests." is already stored
-        When a Doctor Request is sent with values "BDD Best Practices", "A summary with the best practices for making BDD Tests.", "In the article we will explaining the 10 best practices for working with BDD Tests."
-        Then a Response with Status 400 is received
-        And Message with value "A Doctor with the same name already exits." is included in Response Body

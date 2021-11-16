@@ -36,12 +36,16 @@ public class DoctorAddingStepsDefinition {
         this.endpointPath=String.format(endpointPath, randomServerPort);
     }
 
-    @When("a Doctor Request is sent with values {string}, {string}, {string}")
-    public void aDoctorRequestIsSentWithValues(String name, String photoUrl, String description) {
+    @When("a Doctor Request is sent with values {string}, {int}, {string}, {string}, {string}, {string}, {int}")
+    public void aDoctorRequestIsSentWithValues(String name, int age, String photoUrl, String description, String workplace, String specialty, int qualification) {
         CreateDoctorResource resource = new CreateDoctorResource()
                 .withName(name)
+                .withAge(age)
                 .withPhotoUrl(photoUrl)
-                .withDescription(description);
+                .withDescription(description)
+                .withWorkplace(workplace)
+                .withSpecialty(specialty)
+                .withQualification(qualification);
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<CreateDoctorResource> request = new HttpEntity<>(resource, headers);
@@ -54,12 +58,16 @@ public class DoctorAddingStepsDefinition {
         assertThat(expectedStatusCode).isEqualTo(actualStatusCode);
     }
 
-    @And("a Doctor Resource with values {string}, {string}, {string} is included in Response Body")
-    public void aDoctorResourceWithValuesIsIncludedInResponseBody(String expectedName, String expectedPhotoUrl, String expectedDescription) {
+    @And("a Doctor Resource with values {string}, {int}, {string}, {string}, {string}, {string}, {int} is included in Response Body")
+    public void aDoctorResourceWithValuesIsIncludedInResponseBody(String name, int age, String photoUrl, String description, String workplace, String specialty, int qualification) {
         DoctorResource expectedResource = new DoctorResource()
-                .withName(expectedName)
-                .withPhotoUrl(expectedPhotoUrl)
-                .withDescription(expectedDescription);
+                .withName(name)
+                .withAge(age)
+                .withPhotoUrl(photoUrl)
+                .withDescription(description)
+                .withWorkplace(workplace)
+                .withSpecialty(specialty)
+                .withQualification(qualification);
         String value = responseEntity.getBody();
         ObjectMapper mapper = new ObjectMapper();
         DoctorResource actualResource;
@@ -73,23 +81,4 @@ public class DoctorAddingStepsDefinition {
         assertThat(expectedResource).usingRecursiveComparison().isEqualTo(actualResource);
     }
 
-    @Given("A Doctor Resource with values {string}, {string}, {string} is already stored")
-    public void aDoctorResourceWithValuesIsAlreadyStored(String name, String photoUrl, String description) {
-        CreateDoctorResource resource = new CreateDoctorResource()
-                .withName(name)
-                .withPhotoUrl(photoUrl)
-                .withDescription(description);
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_JSON);
-        HttpEntity<CreateDoctorResource> request = new HttpEntity<>(resource, headers);
-        responseEntity = testRestTemplate.postForEntity(endpointPath, request, String.class);
-
-    }
-
-    @And("Message with value {string} is included in Response Body")
-    public void messageIsIncludedInResponseBodyWithValue(String expectedMessage) {
-        String responseBody = responseEntity.getBody();
-        assertThat(responseBody).contains(expectedMessage);
-
-    }
 }
