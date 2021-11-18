@@ -1,8 +1,8 @@
-package com.acme.openworldapi.register.mapping;
+package com.acme.openworldapi.appointment.mapping;
 
-import com.acme.openworldapi.register.domain.model.entity.Patient;
-import com.acme.openworldapi.register.resource.CreatePatientResource;
-import com.acme.openworldapi.register.resource.PatientResource;
+import com.acme.openworldapi.appointment.domain.model.entity.Patient;
+import com.acme.openworldapi.appointment.resource.CreatePatientResource;
+import com.acme.openworldapi.appointment.resource.PatientResource;
 import com.acme.openworldapi.shared.mapping.EnhancedModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

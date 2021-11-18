@@ -1,6 +1,6 @@
-package com.acme.openworldapi.register.domain.service;
+package com.acme.openworldapi.appointment.domain.service;
 
-import com.acme.openworldapi.register.domain.model.entity.Patient;
+import com.acme.openworldapi.appointment.domain.model.entity.Patient;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
