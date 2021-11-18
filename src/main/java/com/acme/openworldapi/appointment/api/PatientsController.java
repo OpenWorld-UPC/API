@@ -1,10 +1,10 @@
-package com.acme.openworldapi.register.api;
+package com.acme.openworldapi.appointment.api;
 
-import com.acme.openworldapi.register.domain.model.entity.Patient;
-import com.acme.openworldapi.register.domain.service.PatientService;
-import com.acme.openworldapi.register.mapping.PatientMapper;
-import com.acme.openworldapi.register.resource.CreatePatientResource;
-import com.acme.openworldapi.register.resource.PatientResource;
+import com.acme.openworldapi.appointment.domain.model.entity.Patient;
+import com.acme.openworldapi.appointment.domain.service.PatientService;
+import com.acme.openworldapi.appointment.mapping.PatientMapper;
+import com.acme.openworldapi.appointment.resource.CreatePatientResource;
+import com.acme.openworldapi.appointment.resource.PatientResource;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
