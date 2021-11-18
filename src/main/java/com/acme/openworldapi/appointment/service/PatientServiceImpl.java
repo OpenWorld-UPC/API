@@ -1,8 +1,8 @@
-package com.acme.openworldapi.register.service;
+package com.acme.openworldapi.appointment.service;
 
-import com.acme.openworldapi.register.domain.service.PatientService;
-import com.acme.openworldapi.register.domain.model.entity.Patient;
-import com.acme.openworldapi.register.domain.persistence.PatientRepository;
+import com.acme.openworldapi.appointment.domain.service.PatientService;
+import com.acme.openworldapi.appointment.domain.model.entity.Patient;
+import com.acme.openworldapi.appointment.domain.persistence.PatientRepository;
 import com.acme.openworldapi.shared.exception.ResourceNotFoundException;
 import com.acme.openworldapi.shared.exception.ResourceValidationException;
 import org.springframework.data.domain.Page;

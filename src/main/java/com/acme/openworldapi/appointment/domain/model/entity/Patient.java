@@ -1,4 +1,4 @@
-package com.acme.openworldapi.register.domain.model.entity;
+package com.acme.openworldapi.appointment.domain.model.entity;
 
 import com.acme.openworldapi.shared.domain.model.AuditModel;
 import lombok.*;

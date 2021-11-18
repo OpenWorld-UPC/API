@@ -1,4 +1,4 @@
-package com.acme.openworldapi.register.resource;
+package com.acme.openworldapi.appointment.resource;
 
 import lombok.Getter;
 import lombok.Setter;
