@@ -1,11 +1,15 @@
 package com.acme.openworldapi.appointment.resource;
 
+
 import com.acme.openworldapi.appointment.domain.model.entity.enums.Status;
-import lombok.Getter;
-import lombok.Setter;
+
+import lombok.*;
 
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@With
 public class ReservationResource {
     private Long id;
     private String title;

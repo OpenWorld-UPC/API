@@ -23,7 +23,6 @@ public class Doctor extends AuditModel {
     @NotNull
     @NotBlank
     @Size(max = 100)
-    @Column(unique = true)
     private String name;
 
     @NotNull
