@@ -1,13 +1,16 @@
 package com.acme.openworldapi.appointment.resource;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Setter
 @Getter
+@NoArgsConstructor
+@AllArgsConstructor
+@With
 public class PatientResource {
     private Long id;
     private String name;
     private int age;
     private String photoUrl;
+
 }

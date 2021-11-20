@@ -1,9 +1,7 @@
 package com.acme.openworldapi.appointment.service;
 
-import com.acme.openworldapi.appointment.domain.model.entity.Doctor;
 import com.acme.openworldapi.appointment.domain.model.entity.Reservation;
 import com.acme.openworldapi.appointment.domain.persistence.DoctorRepository;
-import com.acme.openworldapi.appointment.domain.persistence.PatientRepository;
 import com.acme.openworldapi.appointment.domain.persistence.ReservationRepository;
 import com.acme.openworldapi.appointment.domain.service.ReservationService;
 import com.acme.openworldapi.shared.exception.ResourceNotFoundException;
@@ -15,7 +13,6 @@ import org.springframework.stereotype.Service;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validator;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -27,50 +24,34 @@ public class ReservationServiceImpl implements ReservationService {
 
     private final DoctorRepository doctorRepository;
 
-    private final PatientRepository patientRepository;
-
     private final Validator validator;
 
-    public ReservationServiceImpl(ReservationRepository reservationRepository, DoctorRepository doctorRepository, PatientRepository patientRepository, Validator validator) {
+    public ReservationServiceImpl(ReservationRepository reservationRepository, DoctorRepository doctorRepository, Validator validator) {
         this.reservationRepository = reservationRepository;
         this.doctorRepository = doctorRepository;
-        this.patientRepository = patientRepository;
         this.validator = validator;
     }
 
     @Override
-    public List<Reservation> getAllByDoctorIdPatientId(Long doctorId, Long patientId) {
-
-        if (reservationRepository.findByPatientId(patientId).isEmpty()) {
-            return null;
-        } else {
-            return reservationRepository.findByDoctorId(doctorId);
-        }
+    public List<Reservation> getAllByDoctorId(Long doctorId) {
+        return reservationRepository.findByDoctorId(doctorId);
     }
 
     @Override
-    public Page<Reservation> getAllByDoctorIdPatientId(Long doctorId, Long patientId, Pageable pageable) {
-
-        if (reservationRepository.findByPatientId(patientId).isEmpty() && reservationRepository.findByDoctorId(doctorId).isEmpty()) {
-            return null;
-        } else {
-            return reservationRepository.findByDoctorId(doctorId, pageable);
-        }
+    public Page<Reservation> getAllByDoctorId(Long doctorId, Pageable pageable) {
+        return reservationRepository.findByDoctorId(doctorId, pageable);
     }
 
-    @Override
-    public Reservation create(Long doctorId, Long patientId, Reservation request) {
+     @Override
+    public Reservation create(Long doctorId, Reservation request) {
 
         Set<ConstraintViolation<Reservation>> violations = validator.validate(request);
         if (!violations.isEmpty())
             throw new ResourceValidationException(ENTITY, violations);
 
-        doctorRepository.findById(doctorId).map(doctor ->
-                patientRepository.findById(patientId).map(patient ->
-                        reservationRepository.save(request.withDoctor(doctor).withPatient(patient))
-                )).orElseThrow(() -> new ResourceNotFoundException("Doctor", doctorId));
-        ;
-        return request;
+        return doctorRepository.findById(doctorId).map(doctor ->
+                reservationRepository.save(request.withDoctor(doctor))).orElseThrow(() -> new ResourceNotFoundException("Doctor", doctorId));
+
     }
 
     @Override
@@ -81,15 +62,5 @@ public class ReservationServiceImpl implements ReservationService {
     @Override
     public ResponseEntity<?> delete(Long doctorId, Long ReservationId) {
         return null;
-    }
-
-    @Override
-    public List<Reservation> getAllByPatientId(Long patientId) {
-        return reservationRepository.findByPatientId(patientId);
-    }
-
-    @Override
-    public Page<Reservation> getAllByPatientId(Long patientId, Pageable pageable) {
-        return reservationRepository.findByPatientId(patientId, pageable);
     }
 }
