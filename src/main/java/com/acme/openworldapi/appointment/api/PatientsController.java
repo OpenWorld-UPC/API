@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/patients")
-@CrossOrigin(origins = "https://open-world-api-upc.herokuapp.com")
+@CrossOrigin(origins = "http://localhost:8080")
 public class PatientsController {
     private final PatientService patientService;
 
