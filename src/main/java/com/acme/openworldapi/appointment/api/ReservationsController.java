@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/doctors/{doctorId}/reservations")
+@CrossOrigin(origins = "https://open-world-api-upc.herokuapp.com")
 public class ReservationsController {
 
     private final ReservationService reservationService;
