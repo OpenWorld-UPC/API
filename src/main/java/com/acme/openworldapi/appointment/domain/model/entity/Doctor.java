@@ -32,6 +32,7 @@ public class Doctor extends AuditModel {
     @NotNull
     @NotBlank
     @Size(max = 1000)
+    @Column(name = "photo_url")
     private String photoUrl;
 
     @NotNull
