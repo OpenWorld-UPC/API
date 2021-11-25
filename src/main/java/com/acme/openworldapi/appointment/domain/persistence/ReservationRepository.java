@@ -13,6 +13,6 @@ import java.util.Optional;
 
 @Repository
 public interface ReservationRepository extends JpaRepository<Reservation, Long> {
-    @Query("SELECT p FROM Reservation p WHERE p.doctor.id = ?1")
-    List<Reservation> findAllReservationByDoctorId(@Param("doctorId") Long doctorId);
+    @Query("SELECT p FROM Reservation p WHERE p.doctor.id = ?1 and p.patient.id = ?2")
+    List<Reservation> findAllReservationByDoctorId(@Param("doctorId") Long doctorId, @Param("patientId") Long patientId);
 }
