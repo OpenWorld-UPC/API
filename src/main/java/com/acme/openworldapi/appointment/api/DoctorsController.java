@@ -22,7 +22,7 @@ public class DoctorsController {
         this.doctorService = doctorService;
         this.mapper = doctorMapper;
     }
-
+    @CrossOrigin(origins = "https://openworld-77ae7.web.app")
     @GetMapping
     public List<Doctor> getAllDoctors(){
         return doctorService.getAll();
