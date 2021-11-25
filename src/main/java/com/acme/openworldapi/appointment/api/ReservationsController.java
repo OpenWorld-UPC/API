@@ -8,10 +8,11 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 
 @RestController
-@RequestMapping("/api/v1/doctors/{doctorId}/reservations")
-@CrossOrigin(origins = "http://localhost:4200")
+@RequestMapping("/api/v1/patients/{patientId}/doctors/{doctorId}/reservations/")
 public class ReservationsController {
 
     private final ReservationService reservationService;
@@ -24,13 +25,17 @@ public class ReservationsController {
     }
 
     @GetMapping
-    public Page<ReservationResource> getAllReservationsByDoctorId(@PathVariable Long doctorId, Pageable pageable) {
-        return mapper.modelListToPage(reservationService.getAllByDoctorId(doctorId), pageable);
+    public Page<ReservationResource> getAllReservationsByDoctorId(@PathVariable Long doctorId,
+                                                                  @PathVariable Long patientId,
+                                                                  Pageable pageable) {
+        return mapper.modelListToPage(reservationService.getAllByDoctorIdPatientId(doctorId, patientId), pageable);
     }
+
 
     @PostMapping
     public ReservationResource createReservation(@PathVariable Long doctorId,
-                                         @RequestBody CreateReservationResource request) {
-        return mapper.toResource(reservationService.create(doctorId, mapper.toModel(request)));
+                                                 @PathVariable Long patientId,
+                                                 @Valid  @RequestBody CreateReservationResource request) {
+        return mapper.toResource(reservationService.create(doctorId, patientId, mapper.toModel(request)));
     }
 }
