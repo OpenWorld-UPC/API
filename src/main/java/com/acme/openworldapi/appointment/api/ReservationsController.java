@@ -24,6 +24,7 @@ public class ReservationsController {
         this.mapper = reservationMapper;
     }
 
+    @CrossOrigin(origins = "https://openworld-77ae7.web.app")
     @GetMapping
     public Page<ReservationResource> getAllReservationsByDoctorId(@PathVariable Long doctorId,
                                                                   @PathVariable Long patientId,
