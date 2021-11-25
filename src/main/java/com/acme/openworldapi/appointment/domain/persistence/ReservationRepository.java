@@ -12,7 +12,6 @@ import java.util.Optional;
 
 @Repository
 public interface ReservationRepository extends JpaRepository<Reservation, Long> {
-    @Query("select l from Reservation l where l.patient.id = 1 and l.doctor.id = 1")
     List<Reservation> findByDoctorIdAndPatientId();
 
     List<Reservation> findByPatientId(Long ReservationId);
