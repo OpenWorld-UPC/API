@@ -58,6 +58,7 @@ public class ReservationServiceImpl implements ReservationService {
         return reservationRepository.findAll();
     }
 
+    @Transactional(readOnly = true)
     @Override
     public List<Reservation> getAllReservationsByPatientId(Long patientId) {
         return reservationRepository.findByPatientId(patientId);

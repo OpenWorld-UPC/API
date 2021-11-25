@@ -19,6 +19,6 @@ public interface ReservationRepository extends JpaRepository<Reservation, Long> 
     @Query("SELECT p FROM Reservation p WHERE p.doctor.id = :doctorId AND p.patient.id = :patientId AND p.id = :reservationId")
     List<Reservation> findReservationByDoctorIdAndPatientIdAndReservationId(@Param("doctorId") Long doctorId, @Param("patientId") Long patientId, @Param("reservationId") Long reservationId);
 
-    @Query("SELECT p FROM Reservation  p WHERE p.patient.id = :patientId")
+    @Query("SELECT p FROM Reservation p WHERE p.patient.id = :patientId")
     List<Reservation> findByPatientId(@Param("patientId") Long patientId);
 }
