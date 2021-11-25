@@ -28,7 +28,7 @@ public class ReservationsController {
 
 
     @CrossOrigin(origins = "https://openworld-77ae7.web.app")
-    @GetMapping
+    @GetMapping("/reservations")
     public List<Reservation> getAllReservations(){
         return reservationService.getAllReservations();
     }
