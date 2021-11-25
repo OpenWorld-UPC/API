@@ -5,9 +5,12 @@ import com.acme.openworldapi.appointment.domain.service.ReservationService;
 import com.acme.openworldapi.appointment.mapping.ReservationMapper;
 import com.acme.openworldapi.appointment.resource.CreateReservationResource;
 import com.acme.openworldapi.appointment.resource.ReservationResource;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 
 @RestController
@@ -24,7 +27,7 @@ public class ReservationsController {
     }
 
     @CrossOrigin(origins = "https://openworld-77ae7.web.app")
-    @GetMapping("/patients/{patientId}/doctors/{doctorId}/reservations")
+    @GetMapping("/reservations/{reservationId}")
     public Reservation getAllReservationsByDoctorId(@PathVariable Long reservationId){
         return reservationService.getAllReservations(reservationId);
     }
