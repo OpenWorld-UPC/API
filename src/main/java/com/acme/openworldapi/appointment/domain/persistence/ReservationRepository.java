@@ -12,13 +12,4 @@ import java.util.Optional;
 
 @Repository
 public interface ReservationRepository extends JpaRepository<Reservation, Long> {
-    List<Reservation> findByDoctorIdAndPatientId();
-
-    List<Reservation> findByPatientId(Long ReservationId);
-    Page<Reservation> findByPatientId(Long ReservationId, Pageable pageable);
-
-    List<Reservation> findByDoctorId(Long DoctorId);
-    Page<Reservation> findByDoctorId(Long DoctorId, Pageable pageable);
-
-    List<Reservation> findByReservationId(Long reservationId);
 }

@@ -8,15 +8,7 @@ import org.springframework.http.ResponseEntity;
 import java.util.List;
 
 public interface ReservationService {
-    //Doctor Reservation
-    List<Reservation> getAllByDoctorIdPatientId(Long doctorId, Long patientId);
     Reservation create(Long doctorId, Long patientId, Reservation request);
-    Reservation update(Long doctorId, Long ReservationId, Reservation request);
-    ResponseEntity<?> delete(Long doctorId, Long ReservationId);
-
-    //Patient Reservation
-    List<Reservation> getAllByPatientId(Long patientId);
-    Page<Reservation> getAllByPatientId(Long patientId, Pageable pageable);
 
     Reservation getAllReservations(Long reservationId);
 }

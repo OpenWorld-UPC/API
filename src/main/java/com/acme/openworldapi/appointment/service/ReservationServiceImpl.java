@@ -40,11 +40,6 @@ public class ReservationServiceImpl implements ReservationService {
         this.validator = validator;
     }
 
-    @Override
-    public List<Reservation> getAllByDoctorIdPatientId(Long doctorId, Long patientId) {
-        return reservationRepository.findByDoctorIdAndPatientId();
-    }
-
 
     @Override
     public Reservation create(Long doctorId, Long patientId, Reservation request) {
@@ -59,26 +54,6 @@ public class ReservationServiceImpl implements ReservationService {
                 )).orElseThrow(() -> new ResourceNotFoundException("Doctor", doctorId));
         ;
         return request;
-    }
-
-    @Override
-    public Reservation update(Long doctorId, Long ReservationId, Reservation request) {
-        return null;
-    }
-
-    @Override
-    public ResponseEntity<?> delete(Long doctorId, Long ReservationId) {
-        return null;
-    }
-
-    @Override
-    public List<Reservation> getAllByPatientId(Long patientId) {
-        return reservationRepository.findByPatientId(patientId);
-    }
-
-    @Override
-    public Page<Reservation> getAllByPatientId(Long patientId, Pageable pageable) {
-        return reservationRepository.findByPatientId(patientId, pageable);
     }
 
     @Override
