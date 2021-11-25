@@ -1,5 +1,6 @@
 package com.acme.openworldapi.appointment.api;
 
+import com.acme.openworldapi.appointment.domain.model.entity.Reservation;
 import com.acme.openworldapi.appointment.domain.service.ReservationService;
 import com.acme.openworldapi.appointment.mapping.ReservationMapper;
 import com.acme.openworldapi.appointment.resource.CreateReservationResource;
@@ -9,6 +10,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 
 @RestController
@@ -26,10 +28,9 @@ public class ReservationsController {
 
     @CrossOrigin(origins = "https://openworld-77ae7.web.app")
     @GetMapping
-    public Page<ReservationResource> getAllReservationsByDoctorId(@PathVariable Long doctorId,
-                                                                  @PathVariable Long patientId,
-                                                                  Pageable pageable) {
-        return mapper.modelListToPage(reservationService.getAllByDoctorIdPatientId(doctorId, patientId), pageable);
+    public List<Reservation> getAllReservationsByDoctorId(@PathVariable Long doctorId,
+                                                          @PathVariable Long patientId) {
+        return reservationService.getAllByDoctorIdPatientId(doctorId, patientId);
     }
 
 
