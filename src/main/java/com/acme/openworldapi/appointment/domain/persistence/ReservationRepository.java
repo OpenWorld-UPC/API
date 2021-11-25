@@ -9,9 +9,10 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface ReservationRepository extends JpaRepository<Reservation, Long> {
-    @Query("SELECT p FROM Reservation p WHERE p.doctor.id = :doctorId and p.patient.id = :patientId")
-    List<Reservation> findAllReservationByDoctorId(@Param("doctorId") Long doctorId, @Param("patientId") Long patientId);
+    @Query("SELECT p FROM Reservation p WHERE p.doctor.id = ?1")
+    List<Reservation> findAllReservationByDoctorId(@Param("doctorId") Long doctorId);
 }

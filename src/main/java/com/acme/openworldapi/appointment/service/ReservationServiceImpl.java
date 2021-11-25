@@ -64,6 +64,6 @@ public class ReservationServiceImpl implements ReservationService {
     @Transactional(readOnly = true)
     @Override
     public List<Reservation> getReservationByDoctorId(Long doctorId, Long patientId) {
-        return reservationRepository.findAllReservationByDoctorId(doctorId, patientId);
+        return reservationRepository.findAllReservationByDoctorId(doctorId);
     }
 }
