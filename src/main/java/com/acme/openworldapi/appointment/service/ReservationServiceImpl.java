@@ -63,6 +63,6 @@ public class ReservationServiceImpl implements ReservationService {
 
     @Override
     public List<Reservation> getAllReservationsById(Long reservationId) {
-        return reservationRepository.findAllById(reservationId);
+        return reservationRepository.findAllReservationById(reservationId);
     }
 }
