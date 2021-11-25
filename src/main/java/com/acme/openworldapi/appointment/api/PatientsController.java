@@ -22,15 +22,18 @@ public class PatientsController {
         this.mapper = patientMapper;
     }
 
+    @CrossOrigin(origins = "https://openworld-77ae7.web.app")
     @GetMapping
     public List<Patient> getAllPatients(){
         return patientService.getAll();
     }
 
+    @CrossOrigin(origins = "https://openworld-77ae7.web.app")
     @GetMapping("/{patientId}")
     public Patient getPatientById(@PathVariable Long patientId) {
         return patientService.getById(patientId); }
 
+    @CrossOrigin(origins = "https://openworld-77ae7.web.app")
     @PostMapping
     public PatientResource createPatient(@Valid @RequestBody CreatePatientResource resource) {
         return mapper.toResource(patientService.create(mapper.toModel(resource)));
