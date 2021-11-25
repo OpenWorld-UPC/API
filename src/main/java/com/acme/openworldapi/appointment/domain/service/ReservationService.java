@@ -10,7 +10,6 @@ import java.util.List;
 public interface ReservationService {
     //Doctor Reservation
     List<Reservation> getAllByDoctorIdPatientId(Long doctorId, Long patientId);
-    Page<Reservation> getAllByDoctorIdPatientId(Long doctorId, Long patientId, Pageable pageable);
     Reservation create(Long doctorId, Long patientId, Reservation request);
     Reservation update(Long doctorId, Long ReservationId, Reservation request);
     ResponseEntity<?> delete(Long doctorId, Long ReservationId);

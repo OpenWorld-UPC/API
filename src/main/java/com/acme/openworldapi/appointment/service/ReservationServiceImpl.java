@@ -40,23 +40,9 @@ public class ReservationServiceImpl implements ReservationService {
 
     @Override
     public List<Reservation> getAllByDoctorIdPatientId(Long doctorId, Long patientId) {
-
-        if (reservationRepository.findByPatientId(patientId).isEmpty()) {
-            return reservationRepository.findByDoctorId(doctorId);
-        } else {
-            return reservationRepository.findByDoctorId(doctorId);
-        }
+        return reservationRepository.findByDoctorId(doctorId);
     }
 
-    @Override
-    public Page<Reservation> getAllByDoctorIdPatientId(Long doctorId, Long patientId, Pageable pageable) {
-
-        if (reservationRepository.findByPatientId(patientId).isEmpty() && reservationRepository.findByDoctorId(doctorId).isEmpty()) {
-            return reservationRepository.findByDoctorId(doctorId, pageable);
-        } else {
-            return reservationRepository.findByDoctorId(doctorId, pageable);
-        }
-    }
 
     @Override
     public Reservation create(Long doctorId, Long patientId, Reservation request) {
