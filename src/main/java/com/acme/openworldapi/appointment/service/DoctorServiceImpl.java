@@ -3,6 +3,7 @@ package com.acme.openworldapi.appointment.service;
 import com.acme.openworldapi.appointment.domain.model.entity.Doctor;
 import com.acme.openworldapi.appointment.domain.persistence.DoctorRepository;
 import com.acme.openworldapi.appointment.domain.service.DoctorService;
+import com.acme.openworldapi.shared.exception.ResourceNotFoundException;
 import com.acme.openworldapi.shared.exception.ResourceValidationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -45,5 +46,10 @@ public class DoctorServiceImpl implements DoctorService {
             throw new ResourceValidationException(ENTITY, violations);
 
         return doctorRepository.save(doctor);
+    }
+
+    @Override
+    public Doctor getDoctorById(Long doctorId) {
+        return doctorRepository.findById(doctorId).orElseThrow(()-> new ResourceNotFoundException("Doctor", doctorId));
     }
 }

@@ -10,4 +10,5 @@ public interface DoctorService {
     List<Doctor> getAll();
     Page<Doctor> getAll(Pageable pageable);
     Doctor create(Doctor doctor);
+    Doctor getDoctorById(Long doctorId);
 }
