@@ -12,5 +12,5 @@ public interface ReservationService {
 
     Optional<Reservation> getReservationById(Long reservationId);
 
-    List<Reservation> getReservationByDoctorId(Long doctorId, Long patientId);
+    List<Reservation> getReservationByDoctorId(Long doctorId);
 }
