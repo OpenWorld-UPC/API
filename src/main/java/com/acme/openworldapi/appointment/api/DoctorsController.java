@@ -14,7 +14,7 @@ import java.util.List;
 @RequestMapping("/api/v1/doctors")
 public class DoctorsController {
     private final DoctorService doctorService;
-  //hola
+
     private final DoctorMapper mapper;
 
     public DoctorsController(DoctorService doctorService, DoctorMapper doctorMapper) {
