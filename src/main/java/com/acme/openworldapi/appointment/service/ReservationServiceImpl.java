@@ -42,7 +42,7 @@ public class ReservationServiceImpl implements ReservationService {
     public List<Reservation> getAllByDoctorIdPatientId(Long doctorId, Long patientId) {
 
         if (reservationRepository.findByPatientId(patientId).isEmpty()) {
-            return null;
+            return reservationRepository.findByDoctorId(doctorId);
         } else {
             return reservationRepository.findByDoctorId(doctorId);
         }
