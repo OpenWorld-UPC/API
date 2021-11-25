@@ -14,7 +14,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/api/v1/patients/{patientId}/doctors/{doctorId}/reservations/")
+@RequestMapping("/api/v1/patients/{patientId}/doctors/{doctorId}/reservations")
 public class ReservationsController {
 
     private final ReservationService reservationService;
