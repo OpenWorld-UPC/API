@@ -17,4 +17,6 @@ public interface ReservationService {
     //Patient Reservation
     List<Reservation> getAllByPatientId(Long patientId);
     Page<Reservation> getAllByPatientId(Long patientId, Pageable pageable);
+
+    Reservation getAllReservations(Long reservationId);
 }

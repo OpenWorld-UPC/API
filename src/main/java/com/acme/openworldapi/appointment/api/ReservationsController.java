@@ -14,7 +14,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/api/v1/patients/{patientId}/doctors/{doctorId}/reservations")
+@RequestMapping("/api/v1")
 public class ReservationsController {
 
     private final ReservationService reservationService;
@@ -27,18 +27,19 @@ public class ReservationsController {
     }
 
     @CrossOrigin(origins = "https://openworld-77ae7.web.app")
-    @GetMapping
-    public List<Reservation> getAllReservationsByDoctorId(@PathVariable Long doctorId,
-                                                          @PathVariable Long patientId) {
-        return reservationService.getAllByDoctorIdPatientId(doctorId, patientId);
+    @GetMapping("/reservations")
+    public Reservation getAllReservationsByDoctorId(@PathVariable Long reservationId){
+        return reservationService.getAllReservations(reservationId);
     }
 
 
     @CrossOrigin(origins = "https://openworld-77ae7.web.app")
-    @PostMapping
+    @PostMapping("/patients/{patientId}/doctors/{doctorId}/reservations")
     public ReservationResource createReservation(@PathVariable Long doctorId,
                                                  @PathVariable Long patientId,
                                                  @Valid  @RequestBody CreateReservationResource request) {
         return mapper.toResource(reservationService.create(doctorId, patientId, mapper.toModel(request)));
     }
+
+
 }

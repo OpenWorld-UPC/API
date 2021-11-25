@@ -80,4 +80,9 @@ public class ReservationServiceImpl implements ReservationService {
     public Page<Reservation> getAllByPatientId(Long patientId, Pageable pageable) {
         return reservationRepository.findByPatientId(patientId, pageable);
     }
+
+    @Override
+    public Reservation getAllReservations(Long reservationId) {
+        return reservationRepository.findById(reservationId).orElseThrow(()-> new ResourceNotFoundException("Reservation", reservationId));
+    }
 }
