@@ -10,5 +10,5 @@ import java.util.List;
 public interface ReservationService {
     Reservation create(Long doctorId, Long patientId, Reservation request);
 
-    Reservation getAllReservations(Long reservationId);
+    List<Reservation> getAllReservations();
 }
