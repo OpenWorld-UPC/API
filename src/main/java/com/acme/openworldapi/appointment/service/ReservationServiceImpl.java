@@ -52,7 +52,7 @@ public class ReservationServiceImpl implements ReservationService {
     public Page<Reservation> getAllByDoctorIdPatientId(Long doctorId, Long patientId, Pageable pageable) {
 
         if (reservationRepository.findByPatientId(patientId).isEmpty() && reservationRepository.findByDoctorId(doctorId).isEmpty()) {
-            return null;
+            return reservationRepository.findByDoctorId(doctorId, pageable);
         } else {
             return reservationRepository.findByDoctorId(doctorId, pageable);
         }
