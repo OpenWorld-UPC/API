@@ -32,6 +32,7 @@ public class DoctorsController {
         return mapper.toResource(doctorService.create(mapper.toModel(resource)));
     }
 
+    @CrossOrigin(origins = "https://openworld-77ae7.web.app")
     @GetMapping("/{doctorId}")
     public Doctor getDoctorById(@PathVariable Long doctorId) {
         return doctorService.getDoctorById(doctorId);
