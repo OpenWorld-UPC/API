@@ -40,7 +40,7 @@ public class ReservationServiceImpl implements ReservationService {
 
     @Override
     public List<Reservation> getAllByDoctorIdPatientId(Long doctorId, Long patientId) {
-        return reservationRepository.findByDoctorId(doctorId);
+        return reservationRepository.findByDoctorIdAndPatientId(doctorId, patientId);
     }
 
 
