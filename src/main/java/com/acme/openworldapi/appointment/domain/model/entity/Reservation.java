@@ -2,6 +2,7 @@ package com.acme.openworldapi.appointment.domain.model.entity;
 
 import com.acme.openworldapi.appointment.domain.model.entity.enums.Status;
 import com.acme.openworldapi.shared.domain.model.AuditModel;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
 import javax.persistence.*;
