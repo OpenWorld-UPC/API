@@ -32,6 +32,7 @@ public class ReservationsController {
     }
 
 
+    @CrossOrigin(origins = "https://openworld-77ae7.web.app")
     @PostMapping
     public ReservationResource createReservation(@PathVariable Long doctorId,
                                                  @PathVariable Long patientId,
