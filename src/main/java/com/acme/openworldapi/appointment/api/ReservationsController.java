@@ -3,7 +3,9 @@ package com.acme.openworldapi.appointment.api;
 import com.acme.openworldapi.appointment.domain.model.entity.Reservation;
 import com.acme.openworldapi.appointment.domain.service.ReservationService;
 import com.acme.openworldapi.appointment.mapping.ReservationMapper;
+import com.acme.openworldapi.appointment.resource.CreateDoctorResource;
 import com.acme.openworldapi.appointment.resource.CreateReservationResource;
+import com.acme.openworldapi.appointment.resource.DoctorResource;
 import com.acme.openworldapi.appointment.resource.ReservationResource;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,6 +27,12 @@ public class ReservationsController {
         this.mapper = reservationMapper;
     }
 
+
+    @CrossOrigin(origins = "https://openworld-77ae7.web.app")
+    @PostMapping("/reservations")
+    public ReservationResource createReservation(@Valid @RequestBody CreateReservationResource resource) {
+        return mapper.toResource(reservationService.create(mapper.toModel(resource)));
+    }
 
     @CrossOrigin(origins = "https://openworld-77ae7.web.app")
     @GetMapping("/reservations/{reservationId}")
@@ -49,7 +57,7 @@ public class ReservationsController {
     public ReservationResource createReservation(@PathVariable Long doctorId,
                                                  @PathVariable Long patientId,
                                                  @Valid  @RequestBody CreateReservationResource request) {
-        return mapper.toResource(reservationService.create(doctorId, patientId, mapper.toModel(request)));
+        return mapper.toResource(reservationService.createByDoctorIdAndPatientId(doctorId, patientId, mapper.toModel(request)));
     }
 
 

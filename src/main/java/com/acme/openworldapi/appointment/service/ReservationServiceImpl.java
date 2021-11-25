@@ -1,10 +1,12 @@
 package com.acme.openworldapi.appointment.service;
 
+import com.acme.openworldapi.appointment.domain.model.entity.Doctor;
 import com.acme.openworldapi.appointment.domain.model.entity.Reservation;
 import com.acme.openworldapi.appointment.domain.persistence.DoctorRepository;
 import com.acme.openworldapi.appointment.domain.persistence.PatientRepository;
 import com.acme.openworldapi.appointment.domain.persistence.ReservationRepository;
 import com.acme.openworldapi.appointment.domain.service.ReservationService;
+import com.acme.openworldapi.appointment.resource.ReservationResource;
 import com.acme.openworldapi.shared.exception.ResourceNotFoundException;
 import com.acme.openworldapi.shared.exception.ResourceValidationException;
 import org.springframework.stereotype.Service;
@@ -37,7 +39,7 @@ public class ReservationServiceImpl implements ReservationService {
 
 
     @Override
-    public Reservation create(Long doctorId, Long patientId, Reservation request) {
+    public Reservation createByDoctorIdAndPatientId(Long doctorId, Long patientId, Reservation request) {
 
         Set<ConstraintViolation<Reservation>> violations = validator.validate(request);
         if (!violations.isEmpty())
@@ -71,5 +73,14 @@ public class ReservationServiceImpl implements ReservationService {
     @Override
     public List<Reservation> getReservationByDoctorIdAndPatientIdAndReservationId(Long doctorId, Long patientId, Long reservationId){
         return reservationRepository.findReservationByDoctorIdAndPatientIdAndReservationId(doctorId, patientId, reservationId);
+    }
+
+    @Override
+    public Reservation create(Reservation reservation) {
+        Set<ConstraintViolation<Reservation>> violations = validator.validate(reservation);
+        if(!violations.isEmpty())
+            throw new ResourceValidationException(ENTITY, violations);
+
+        return reservationRepository.save(reservation);
     }
 }
