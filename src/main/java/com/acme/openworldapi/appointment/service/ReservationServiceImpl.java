@@ -8,6 +8,7 @@ import com.acme.openworldapi.appointment.domain.service.ReservationService;
 import com.acme.openworldapi.shared.exception.ResourceNotFoundException;
 import com.acme.openworldapi.shared.exception.ResourceValidationException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validator;
@@ -60,6 +61,7 @@ public class ReservationServiceImpl implements ReservationService {
         return reservationRepository.findById(reservationId);
     }
 
+    @Transactional(readOnly = true)
     @Override
     public List<Reservation> getReservationByDoctorId(Long doctorId) {
         return reservationRepository.findAllReservationByDoctorId(doctorId);
