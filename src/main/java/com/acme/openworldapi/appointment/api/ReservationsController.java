@@ -8,6 +8,7 @@ import com.acme.openworldapi.appointment.resource.ReservationResource;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 import java.util.Optional;
 
 
@@ -33,7 +34,7 @@ public class ReservationsController {
 
     @CrossOrigin(origins = "https://openworld-77ae7.web.app")
     @GetMapping("/doctors/{doctorId}/reservations")
-    public Optional<Reservation> getReservationByDoctorId(@PathVariable Long doctorId){
+    public List<Reservation> getReservationByDoctorId(@PathVariable Long doctorId){
         return reservationService.getReservationByDoctorId(doctorId);
     }
 
