@@ -33,11 +33,16 @@ public class ReservationsController {
     }
 
     @CrossOrigin(origins = "https://openworld-77ae7.web.app")
-    @GetMapping("/patients/{patientId}/doctors/{doctorId}/reservations")
-    public List<Reservation> getReservationByDoctorId(@PathVariable Long doctorId, @PathVariable Long patientId){
-        return reservationService.getReservationByDoctorId(doctorId, patientId);
+    @GetMapping("/patients/{patientId}/doctors/{doctorId}/reservations/{reservationId}")
+    public List<Reservation> getReservationByDoctorId(@PathVariable Long doctorId, @PathVariable Long patientId, @PathVariable Long reservationId){
+        return reservationService.getReservationByDoctorIdAndPatientIdAndReservationId(doctorId, patientId, reservationId);
     }
 
+    @CrossOrigin(origins = "https://openworld-77ae7.web.app")
+    @GetMapping("/patients/{patientId}/doctors/{doctorId}/reservations")
+    public List<Reservation> getReservationByDoctorId(@PathVariable Long doctorId, @PathVariable Long patientId){
+        return reservationService.getAllReservationsByDoctorIdAndPatientId(doctorId, patientId);
+    }
 
     @CrossOrigin(origins = "https://openworld-77ae7.web.app")
     @PostMapping("/patients/{patientId}/doctors/{doctorId}/reservations")
