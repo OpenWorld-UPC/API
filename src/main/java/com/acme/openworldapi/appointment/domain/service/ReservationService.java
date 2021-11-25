@@ -11,4 +11,6 @@ public interface ReservationService {
     Reservation create(Long doctorId, Long patientId, Reservation request);
 
     List<Reservation> getAllReservations();
+
+    List<Reservation> getAllReservationsById(Long reservationId);
 }
